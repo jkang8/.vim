@@ -4,25 +4,11 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call plug#begin()
 
 " Plug 
-Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/nerdcommenter'
-Plug 'kien/ctrlp.vim'
-Plug 'tpope/vim-surround'
-Plug 'craigemery/vim-autotag'
-Plug 'w0rp/ale'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-airline/vim-airline'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'tpope/vim-fugitive'
-Plug 'hynek/vim-python-pep8-indent'
-Plug 'othree/yajs.vim'
-Plug 'fatih/vim-go'
-Plug 'Valloric/YouCompleteMe'
-Plug 'jiangmiao/auto-pairs'
+Plug 'airblade/vim-gitgutter'
 Plug 'liuchengxu/space-vim-dark'
-Plug 'jceb/vim-orgmode'
-
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'w0rp/ale'
 
 " Vundle end
 call plug#end()
@@ -32,39 +18,15 @@ syntax enable
 
 " Theme
 colorscheme space-vim-dark
-let g:airline_theme='tomorrow'
-"let g:airline_theme='base16_spacemacs'
 
-" Airline settings
-set laststatus=2
+" git gutter
+set updatetime=25
 
-" NERDTree settings
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-map <C-n> :NERDTreeToggle<CR>
-
-" CtrlP settings
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,node_modules,log,*.pyc
-let g:ctrlp_custom_ignore = {
-      \ 'dir':  '\.git*\|log\|\node_modules\|tmp$',
-      \ 'file': '\.DS_STORE$',
-      \ 'link': 'some_bad_symbolic_links',
-      \ }
-
-""" Highlight cursorline
-set cursorline
-""hi CursorLine cterm=NONE ctermbg=white guibg=darkred guifg=white
-""hi CursorColumn cterm=NONE ctermbg=blue ctermfg=white guibg=darkred guifg=white
-hi CursorColumn cterm=NONE ctermfg=white guibg=darkred guifg=white
-nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
-
-""" Highlight overlength
-"highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-"match OverLength /\%81v.\+/
+" fzf
+set rtp+=/usr/local/opt/fzf
+nnoremap <c-p> :FZF<cr>
 
 """ Misc
-set relativenumber
 set number
 set expandtab
 set tabstop=2
@@ -73,6 +35,13 @@ set hlsearch
 set autoindent
 set autoread
 let mapleader = "\<Space>"
+let g:netrw_liststyle = 3
 
-" <Ctrl-l> redraws the screen and removes any search highlighting.
-nnoremap <silent> <C-l> :nohl<CR><C-l>
+" Set undodir
+set undofile
+set undodir=~/.vim/undodir
+
+" grep to ag
+set grepprg='ag'
+
+set mouse=a
