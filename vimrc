@@ -1,18 +1,16 @@
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
+" set rtp+=~/.vim/bundle/Vundle.vim
 call plug#begin()
 
-" Plug 
-Plug 'airblade/vim-gitgutter'
+" Plugs
 Plug 'liuchengxu/space-vim-dark'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-surround'
-Plug 'w0rp/ale'
+Plug 'vim-airline/vim-airline'
+Plug 'jlanzarotta/bufexplorer'
 
-Plug 'tomlion/vim-solidity'
+" Lang Plugs
+Plug 'tpope/vim-rails'
 
 " Vundle end
 call plug#end()
@@ -28,19 +26,40 @@ set shiftwidth=2
 set hlsearch
 set autoindent
 set autoread
-let g:netrw_liststyle = 3
 set incsearch
 set ignorecase
 set showcmd
-"let mapleader = "\<Space>"
 " nnoremap <SPACE> <Nop>
 map <SPACE> \
+nnoremap J 6j
+nnoremap K 6k
+
+" bufexplorer
+nnoremap <Leader>l :BufExplorer<CR>
+nnoremap <Leader>e :Explore<CR>
+nnoremap <Leader>n :bn<CR>
+nnoremap <Leader>p :bp<CR>
+nnoremap <Leader>r :b#<CR>
+nnoremap <Leader>1 :1b<CR>
+nnoremap <Leader>2 :2b<CR>
+nnoremap <Leader>3 :3b<CR>
+nnoremap <Leader>4 :4b<CR>
+nnoremap <Leader>5 :5b<CR>
+nnoremap <Leader>6 :6b<CR>
+nnoremap <Leader>7 :7b<CR>
+nnoremap <Leader>8 :8b<CR>
+nnoremap <Leader>9 :9b<CR>
+nnoremap <Leader>0 :10b<CR>
+set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+
+" Airline
+let g:airline_theme='violet'
 
 " Theme
 colorscheme space-vim-dark
 
 " git gutter
-set updatetime=25
+" set updatetime=25
 
 " fzf
 set rtp+=/usr/local/opt/fzf
